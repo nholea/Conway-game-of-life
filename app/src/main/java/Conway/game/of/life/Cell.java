@@ -6,7 +6,7 @@ public class Cell {
     Random random = new Random();
 
     public Cell() {
-        this.state = random.nextInt(2);
+        this.state = random.nextInt(2); // 0 ---> Dead / 1 --->Alive
     }
 
     public int getState() {
