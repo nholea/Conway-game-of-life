@@ -1,31 +1,28 @@
 package Conway.game.of.life;
+import java.util.Random;
 
 public class Cell {
-    private int colPosition;
-    private int rowPosition;
-    private boolean isAlive;
+    private int state;
 
-    public Cell(int colPosition, int rowPosition, boolean isAlive) {
-        this.colPosition = colPosition;
-        this.rowPosition = rowPosition;
-        this.isAlive = isAlive;
+    Random random = new Random();
+
+
+
+    public Cell() {
+        this.state = random.nextInt(2);
     }
 
-    public boolean getState() {
-        return isAlive;
+    public int getState() {
+        return state;
     }
 
     public void makeAlive() {
-        isAlive = true;
     }
 
     public void makeDead() {
-        isAlive = false;
-    }
-
-    public static void main(String[] args){
-        Cell cell = new Cell(1, 4, true);
-        System.out.println(cell.getState());
 
     }
+
+
+
 }
