@@ -3,12 +3,29 @@
  */
 package Conway.game.of.life;
 
-public class App {
+import java.util.Scanner;
+
+public class GameOfLife {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Grid grid = new Grid();
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("---------- Generation 0 ----------");
+        grid.printBoard(grid.createBoard());
+        System.out.println("Introduce generation numbers: ");
+        int generationNumbers = input.nextInt();
+        int counter = 0;
+
+        while(counter <= generationNumbers) {
+            System.out.println("---------- Generation " + (counter + 1) + " ----------");
+            grid.nextGeneration();
+            grid.printBoard(grid.getBoard());
+            counter++;
+
+        }
     }
 }
