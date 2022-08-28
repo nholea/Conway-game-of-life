@@ -1,6 +1,5 @@
 package Conway.game.of.life;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Grid {
@@ -91,17 +90,5 @@ public class Grid {
 
     public int[][] getBoard() {
         return board;
-    }
-
-    public static void main(String[] args) {
-        Grid grid = new Grid();
-        grid.printBoard(grid.createBoard());
-        System.out.println("-----------------------------------------------\n");
-        grid.nextGeneration();
-        grid.printBoard(grid.getBoard());
-        System.out.println("-----------------------------------------------\n");
-        grid.nextGeneration();
-        grid.printBoard(grid.getBoard());
-
     }
     }
