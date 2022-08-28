@@ -1,8 +1,8 @@
-package Conway.game.of.life;
+package game.of.life;
 
 import java.util.Scanner;
 
-public class Grid {
+public class Board {
     private final int rows;
     private final int cols;
 
@@ -10,7 +10,7 @@ public class Grid {
 
     public final Scanner input = new Scanner(System.in);
 
-    public Grid() {
+    public Board() {
         System.out.println("Introduce row numbers: ");
         this.rows = input.nextInt();
         System.out.println("Introduce col numbers: ");
@@ -27,7 +27,7 @@ public class Grid {
         return board;
     }
 
-    public void printBoard(int [][] inputBoard) {
+    public void printBoard(int[][] inputBoard) {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 if (inputBoard[row][col] == 0) {
@@ -41,46 +41,48 @@ public class Grid {
             System.out.println();
         }
     }
+
     public int getCellStatus(int x, int y) {
-        if(x <0 || x >= rows){
+        if (x < 0 || x >= rows) {
             return 0;
         }
-        if(y <0 || y >= cols){
+        if (y < 0 || y >= cols) {
             return 0;
         }
         return board[x][y];
     }
 
-    public int aliveNeighboursCounter(int x, int y){
+    public int aliveNeighboursCounter(int x, int y) {
         int aliveNeighboursCounter = 0;
 
-        aliveNeighboursCounter +=getCellStatus(x+1, y-1);
-        aliveNeighboursCounter +=getCellStatus(x+1,y);
-        aliveNeighboursCounter +=getCellStatus(x+1, y + 1);
-        aliveNeighboursCounter +=getCellStatus(x, y + 1);
-        aliveNeighboursCounter +=getCellStatus(x,y-1);
-        aliveNeighboursCounter +=getCellStatus(x-1,y+1);
-        aliveNeighboursCounter +=getCellStatus(x-1,y);
-        aliveNeighboursCounter +=getCellStatus(x-1,y-1);
+        aliveNeighboursCounter += getCellStatus(x + 1, y - 1);
+        aliveNeighboursCounter += getCellStatus(x + 1, y);
+        aliveNeighboursCounter += getCellStatus(x + 1, y + 1);
+        aliveNeighboursCounter += getCellStatus(x, y + 1);
+        aliveNeighboursCounter += getCellStatus(x, y - 1);
+        aliveNeighboursCounter += getCellStatus(x - 1, y + 1);
+        aliveNeighboursCounter += getCellStatus(x - 1, y);
+        aliveNeighboursCounter += getCellStatus(x - 1, y - 1);
         return aliveNeighboursCounter;
     }
+
     public void nextGeneration() {
         int[][] nextGeneration = new int[rows][cols];
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                int aliveNeighbours = aliveNeighboursCounter(row,col);
+                int aliveNeighbours = aliveNeighboursCounter(row, col);
 
-                if(getCellStatus(row,col) == 1){
-                    if(aliveNeighbours <2){
+                if (getCellStatus(row, col) == 1) {
+                    if (aliveNeighbours < 2) {
                         nextGeneration[row][col] = 0;
                     } else if (aliveNeighbours > 3) {
                         nextGeneration[row][col] = 0;
                     } else if (aliveNeighbours == 2 || aliveNeighbours == 3) {
-                        nextGeneration[row][col] =1;
+                        nextGeneration[row][col] = 1;
                     }
-                }else {
-                    if (aliveNeighbours == 3){
-                        nextGeneration[row][col] =1;
+                } else {
+                    if (aliveNeighbours == 3) {
+                        nextGeneration[row][col] = 1;
                     }
                 }
             }
@@ -91,4 +93,4 @@ public class Grid {
     public int[][] getBoard() {
         return board;
     }
-    }
+}

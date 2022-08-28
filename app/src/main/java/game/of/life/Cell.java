@@ -1,4 +1,4 @@
-package Conway.game.of.life;
+package game.of.life;
 import java.util.Random;
 
 public class Cell {
