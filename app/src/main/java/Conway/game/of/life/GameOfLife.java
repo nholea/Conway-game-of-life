@@ -25,7 +25,6 @@ public class GameOfLife {
             grid.nextGeneration();
             grid.printBoard(grid.getBoard());
             counter++;
-
         }
     }
 }
